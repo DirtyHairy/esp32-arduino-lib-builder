@@ -8,9 +8,10 @@ source ./tools/config.sh
 
 if [ ! -d "$AR_COMPS/arduino" ]; then
 	git clone $AR_REPO_URL "$AR_COMPS/arduino"
+	git -C "$AR_COMPS/arduino" checkout v3.3-phonytony
 else
 	git -C "$AR_COMPS/arduino" fetch origin && \
-	git -C "$AR_COMPS/arduino" pull origin master
+	git -C "$AR_COMPS/arduino" pull origin v3.3-phonytony
 fi
 if [ $? -ne 0 ]; then exit 1; fi
 git -C "$AR_COMPS/arduino" submodule update --init --recursive
